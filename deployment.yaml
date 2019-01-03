@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-demo-deployment
+  labels:
+    app: docker-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docker-demo
+  template:
+    metadata:
+      labels:
+        app: docker-demo
+    spec:
+      containers:
+        - name: docker-demo
+          image: binlei/docker-demo:release-1.0.0
+          ports:
+            - containerPort: 8080
